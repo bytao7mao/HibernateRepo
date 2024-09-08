@@ -38,6 +38,17 @@ public class HelloWorld {
         HibernateUtil.shutdown();
 
 
+        //Third unit of work
+        Session thirdSession =
+                HibernateUtil.getSessionFactory().openSession();
+        Transaction thirdTransaction = thirdSession.beginTransaction();
+        //msgId holds the identifier value of the first message
+        message.setText("Greetings Earthling");
+        message.setNextMessage(
+                new Message("Take me to your leader")
+        );
+        thirdTransaction.commit();
+        thirdSession.close();
         System.out.println("Hello world!");
     }
 }
