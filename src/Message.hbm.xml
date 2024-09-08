@@ -4,7 +4,8 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name = "hello.Message" table = "MESSAGES">
+    <class name = "hello.Message"
+           table = "MESSAGES">
 
         <meta attribute = "class-description">
             This class contains the employee detail.
@@ -13,6 +14,9 @@
         <id name = "id" column = "MESSAGE_ID">
             <generator class="increment"/>
         </id>
+
+        <property name="text"
+                  column="MESSAGE_TEXT"/>
 
         <many-to-one name="nextMessage"
                      cascade="all"
